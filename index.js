@@ -1,10 +1,23 @@
-import Index from './index.html'
-
 const express = require("express");
-const router = express.Router();
+const app = express();
+const port = 3000;
+const path = require('path');
 
 
-router.get("/", function (req, res) {
-    res.send(Index)
-})
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+app.get("/about.html", function(req, res) {
+    res.sendFile(path.join(__dirname, './about.html'));
+});
+
+app.get("/contact.html", function(req, res) {
+    res.sendFile(path.join(__dirname, './contact.html'));
+});
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});
+
 
